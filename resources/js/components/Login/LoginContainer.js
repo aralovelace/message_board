@@ -115,7 +115,7 @@ class LoginContainer extends Component {
 
     render(){
         const { state = {} } = this.state.redirect;
-        const { error } = state;
+       // const { error } = state;
         return (
             <div className="container">
                 <div className="row justify-content-center">
@@ -131,10 +131,7 @@ class LoginContainer extends Component {
                                     <FlashMessage duration={100000} persistOnHover={true}>
                                         <h5 className={"alert alert-danger"}>Error: {this.state.error}</h5>
                                     </FlashMessage> : ''}
-                                { error && !this.state.isLoggedIn ?
-                                    <FlashMessage duration={100000} persistOnHover={true}>
-                                        <h5 className={"alert alert-danger"}>Error: {error}</h5>
-                                    </FlashMessage> : ''}
+
 
                                 <form onSubmit={this.handleSubmit}>
                                     <div className="form-group">

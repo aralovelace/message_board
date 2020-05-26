@@ -39,12 +39,13 @@ class Header extends  Component {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <MDBNavbarNav left>
                         <MDBNavItem active><MDBNavLink to="/">Home</MDBNavLink></MDBNavItem>
+                        <MDBNavItem ><MDBNavLink to="/board">Board</MDBNavLink></MDBNavItem>
                         {this.state.isLoggedIn ?
-                            <MDBNavItem active><MDBNavLink to="/board">Board</MDBNavLink></MDBNavItem> : "" }
+                            <MDBNavItem ><MDBNavLink to="/board">Board</MDBNavLink></MDBNavItem> : "" }
                         {!this.state.isLoggedIn ?
-                        <MDBNavItem active><MDBNavLink to="/login">Login</MDBNavLink></MDBNavItem>  : "" }
+                        <MDBNavItem ><MDBNavLink to="/login">Login</MDBNavLink></MDBNavItem>  : "" }
                         {!this.state.isLoggedIn ?
-                        <MDBNavItem active><MDBNavLink to="/register">Register</MDBNavLink></MDBNavItem> : "" }
+                        <MDBNavItem ><MDBNavLink to="/register">Register</MDBNavLink></MDBNavItem> : "" }
                     </MDBNavbarNav>
                     <MDBNavbarNav right></MDBNavbarNav>
                     </div>

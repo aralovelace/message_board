@@ -8,7 +8,8 @@ class Home extends Component {
                 <div className="row justify-content-center">
                     <div className="col-md-8">
                         <main className="py-4">
-                            <span>Content Here</span>
+                            <h2>Welcome to the Message Board</h2>
+                            <p>You can only view the message board once you login. Please login to the login page</p>
                         </main>
                     </div>
                 </div>
