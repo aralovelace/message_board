@@ -14,18 +14,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group([
-'prefix' => 'auth'
-], function () {
+Route::group(['prefix' => 'auth'], function () {
     Route::post('login', 'AuthController@login');
     Route::post('register', 'AuthController@register');
-
     Route::group([
         'middleware' => 'auth:api'
     ], function() {
         Route::get('logout', 'AuthController@logout');
         Route::get('user', 'AuthController@user');
     });
+});
+
+
+Route::prefix('data')->group(function() {
+    Route::get('categories','CategoriesController@index');
+
+    Route::resource('posts', 'PostsController');
+
 
 });
+
+
+
 
