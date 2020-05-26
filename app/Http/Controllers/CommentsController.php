@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Post;
 use Illuminate\Http\Request;
 
 class CommentsController extends Controller
@@ -33,9 +34,13 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Post $post, Request $request)
     {
-        //
+       $comment = $post->comments()->create([
+           'user_id' => $request->user_id,
+           'comment' => $request->comment
+       ]);
+        return response()->json(['comment_id' => $comment->id]);
     }
 
     /**

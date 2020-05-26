@@ -53,7 +53,7 @@ class PostsController extends Controller
      */
     public function show(Post $post)
     {
-        return response()->json($post);
+        return $post->load('comments');
     }
 
     /**

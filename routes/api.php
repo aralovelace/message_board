@@ -31,6 +31,12 @@ Route::prefix('data')->group(function() {
 
     Route::resource('posts', 'PostsController');
 
+    Route::prefix('comments')->group(function() {
+        Route::post('{post}', 'CommentsController@store');
+    });
+
+
+
 
 });
 
