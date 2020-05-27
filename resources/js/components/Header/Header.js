@@ -39,7 +39,6 @@ class Header extends  Component {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <MDBNavbarNav left>
                         <MDBNavItem active><MDBNavLink to="/">Home</MDBNavLink></MDBNavItem>
-                        <MDBNavItem ><MDBNavLink to="/board">Board</MDBNavLink></MDBNavItem>
                         {this.state.isLoggedIn ?
                             <MDBNavItem ><MDBNavLink to="/board">Board</MDBNavLink></MDBNavItem> : "" }
                         {!this.state.isLoggedIn ?

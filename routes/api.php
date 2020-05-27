@@ -25,19 +25,16 @@ Route::group(['prefix' => 'auth'], function () {
     });
 });
 
+Route::group(['middleware' => 'api'], function () {
+    Route::prefix('data')->group(function () {
+        Route::get('categories', 'CategoriesController@index');
 
-Route::prefix('data')->group(function() {
-    Route::get('categories','CategoriesController@index');
+        Route::resource('posts', 'PostsController');
 
-    Route::resource('posts', 'PostsController');
-
-    Route::prefix('comments')->group(function() {
-        Route::post('{post}', 'CommentsController@store');
+        Route::prefix('comments')->group(function () {
+            Route::post('{post}', 'CommentsController@store');
+        });
     });
-
-
-
-
 });
 
 

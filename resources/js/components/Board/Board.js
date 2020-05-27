@@ -7,6 +7,9 @@ import Moment from "react-moment";
 import { Button } from "react-bootstrap";
 import {Link} from "react-router-dom";
 
+
+
+
 class Home extends Component {
 
     constructor(props)
@@ -58,7 +61,7 @@ class Home extends Component {
     readMore =  (cell, row) => {
 
         return (
-            <Link to={'/board/'+ cell}> {row.title} </Link>
+            <Link to={'/post/'+ cell}> {row.title} </Link>
         );
     };
 

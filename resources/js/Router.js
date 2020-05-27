@@ -5,6 +5,8 @@ import Home from "./components/Home/Home";
 import PrivateRoute from "./PrivateRoute";
 import Login from "./components/Login/Login";
 import Board from "./components/Board/Board";
+import Msg from "./components/Board/Msg";
+
 
 
 const Main = () => (
@@ -12,8 +14,8 @@ const Main = () => (
     <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/login" component={Login} />
-        <Route path="/board" component={Board} />
-        <Route path="/board/:id}" component={Home} />
+        <PrivateRoute path="/board" component={Board} />
+        <PrivateRoute path="/post/:id" component={Msg} />
 
     </Switch>
 
