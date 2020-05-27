@@ -66,7 +66,7 @@ class LoginContainer extends Component {
                     user: appState.user,
                     error: ''
                 });
-                location.reload();
+                this.props.history.push('/board');
             }
             else {
 

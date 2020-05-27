@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class CommentsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:api')->only(['store', 'update', 'destroy']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -34,13 +39,14 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Post $post, Request $request)
+    public function store(Request $request)
     {
-       $comment = $post->comments()->create([
-           'user_id' => $request->user_id,
+       $comment = Comment::query()->create([
+           'user_id' => auth()->user()->id,
+           'post_id' => $request->post_id,
            'comment' => $request->comment
        ]);
-        return response()->json(['comment_id' => $comment->id]);
+        return response()->json(['data' => $comment, 'message' => 'Comment created successfully!'], 201);
     }
 
     /**

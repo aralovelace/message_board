@@ -22,6 +22,7 @@ class Header extends  Component {
         this.props.history.push('/login');
     }
 
+
     render() {
         const aStyle = {
             cursor: 'pointer'
@@ -30,7 +31,7 @@ class Header extends  Component {
         return (
             <nav className="navbar navbar-expand-md navbar-light bg-white shadow-sm">
                 <div className="container">
-                    <a className="navbar-brand" href="">Board</a>
+                    <span className="navbar-brand">MSGBoard</span>
                     <button className="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -38,9 +39,12 @@ class Header extends  Component {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <MDBNavbarNav left>
-                        <MDBNavItem active><MDBNavLink to="/">Home</MDBNavLink></MDBNavItem>
+                        {!this.state.isLoggedIn ?
+                        <MDBNavItem active><MDBNavLink to="/">Home</MDBNavLink></MDBNavItem> : "" }
                         {this.state.isLoggedIn ?
-                            <MDBNavItem ><MDBNavLink to="/board">Board</MDBNavLink></MDBNavItem> : "" }
+                            <MDBNavItem active><MDBNavLink to="/board">Home</MDBNavLink></MDBNavItem> : "" }
+                        {this.state.isLoggedIn ?
+                            <MDBNavItem ><MDBNavLink to="#"  onClick={this.logOut}>Logout</MDBNavLink></MDBNavItem> : "" }
                         {!this.state.isLoggedIn ?
                         <MDBNavItem ><MDBNavLink to="/login">Login</MDBNavLink></MDBNavItem>  : "" }
                         {!this.state.isLoggedIn ?
