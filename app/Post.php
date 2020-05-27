@@ -10,7 +10,7 @@ class Post extends Model
         'user_id', 'title', 'body','category_id'
     ];
 
-    protected $hidden = ['created_at','updated_at', 'deleted_at'];
+    protected $hidden = ['updated_at', 'deleted_at'];
     /**
      * @var mixed
      */

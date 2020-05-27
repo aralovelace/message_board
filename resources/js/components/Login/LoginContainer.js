@@ -1,6 +1,9 @@
 import React, {Component} from "react";
 import {Link, Redirect, withRouter} from "react-router-dom";
 import FlashMessage from "react-flash-message";
+import {Button} from "react-bootstrap";
+
+
 
 class LoginContainer extends Component {
     constructor(props) {
@@ -66,9 +69,15 @@ class LoginContainer extends Component {
                 location.reload();
             }
             else {
-                alert('You account can\'t be recognised!');
+
+                this.setState({
+                    error: 'Account unrecognisable',
+                    errorMessage: 'Account unrecognisable',
+                    formSubmitting: false
+                })
             }
         }).catch(error => {
+
             if(error.response) {
             let err = error.response.data;
             this.setState({
@@ -153,13 +162,12 @@ class LoginContainer extends Component {
                                             className="form-control"
                                             required onChange={this.handlePassword}/>
                                     </div>
-                                    <button
+                                    <Button
                                         disabled={this.state.formSubmitting}
                                         type="submit"
                                         name="singlebutton"
-                                        className="btn btn-default btn-lg  btn-block mb10"
                                     > {this.state.formSubmitting ? "Logging You In..." : "Log In"}
-                                    </button>
+                                    </Button>
                                 </form>
                             </div>
                         </div>

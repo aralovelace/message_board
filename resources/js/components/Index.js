@@ -15,7 +15,7 @@ class Index extends Component {
         }
     }
 
-    componentWillMount() {
+   componentWillMount() {
         let state = localStorage["appState"];
         if (state){
             let AppState = JSON.parse(state);

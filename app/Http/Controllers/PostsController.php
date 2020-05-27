@@ -14,7 +14,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return response()->json(Post::query()->orderBy('id','DESC')->get());
+        $post = Post::query()->orderBy('id','DESC')->get();
+        return $post->load('user','category');
     }
 
     /**
