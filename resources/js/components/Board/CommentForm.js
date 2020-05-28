@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import FlashMessage from "react-flash-message";
 import {Button} from "react-bootstrap";
 import Comment from "../apis/Comment";
+import { withRouter } from 'react-router-dom';
 
 
 class CommentForm extends Component {
@@ -32,13 +33,27 @@ class CommentForm extends Component {
             errors: null
         });
         Comment.store({'post_id': this.props.post_id  , 'comment':  this.state.comment }).then(response => {
+
+
+            alert(response.data.message);
+            //this.props.history.push("/post/"+this.props.post_id+"?comment-updated");
+            this.props.history.push("/board");
+            /*
             this.setState({
-                success_message: response.data.message
+                success_message: response.data.message,
+                comment: ""
             });
+            *
+             */
+
+
+
+
+
         }).catch(err => {
             this.setState({
-                error_message: err.response.data.message,
-                errors: err.response.data.errors
+                error_message: "There is an error",
+                errors: "There is an error"
             });
         });
     }
@@ -75,6 +90,7 @@ class CommentForm extends Component {
                                                 id="commentMessage"
                                                 rows="10"
                                                 cols="50"
+                                                required
                                                 className="form-control"
                                                 placeholder="Add your comment"
                                                 onChange={this.handleInput}
@@ -91,7 +107,7 @@ class CommentForm extends Component {
                                             <Button
                                                 type="submit"
                                                 name="singlebutton"
-                                            > Submit
+                                             >Submit
                                             </Button>
                                         </div>
                                     </fieldset>
@@ -107,4 +123,4 @@ class CommentForm extends Component {
 
 }
 
-export default CommentForm;
+export default withRouter(CommentForm);

@@ -99,7 +99,7 @@ class Home extends Component {
 
 
         return (
-            <div className="d-flex flex-column flex-md-row align-items-md-center py-5">>
+            <div className="d-flex flex-column flex-md-row align-items-md-center py-5">
                 <div className="container">
                     <div className="row">
                         <div className="col">

@@ -5,6 +5,7 @@ import Comments from "./Comments";
 import CommentForm from "./CommentForm";
 import {MDBIcon} from "mdbreact";
 import ReactHtmlParser from 'react-html-parser';
+import {withRouter} from "react-router-dom";
 
 
 class Msg extends Component {
@@ -34,7 +35,7 @@ class Msg extends Component {
 
     render(){
         return (
-            <div className="d-flex flex-column flex-md-row align-items-md-center py-5">>
+            <div className="d-flex flex-column flex-md-row align-items-md-center py-5">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12 entry">
@@ -77,4 +78,4 @@ class Msg extends Component {
 
 }
 
-export default Msg;
+export default withRouter(Msg);

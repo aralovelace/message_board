@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { withRouter } from 'react-router-dom';
 import FlashMessage from "react-flash-message";
 import {Button} from "react-bootstrap";
 import Select from "react-select";
@@ -42,9 +43,17 @@ class AddNewPost extends Component {
             'category_id': this.state.category.value,
             'tags': ''
         }).then(response => {
+            alert(response.data.message);
+            this.props.history.push("/board");
+            /*
             this.setState({
                 success_message: response.data.message
             });
+            */
+
+
+
+
         }).catch(err => {
             this.setState({
                 error_message: err.response.data.message,
@@ -154,4 +163,4 @@ class AddNewPost extends Component {
 
 }
 
-export default AddNewPost;
+export default withRouter(AddNewPost);
