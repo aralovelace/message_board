@@ -52,6 +52,8 @@ class Header extends  Component {
                         {this.state.isLoggedIn ?
                             <MDBNavItem active><MDBNavLink to="/board">Home</MDBNavLink></MDBNavItem> : "" }
                         {this.state.isLoggedIn ?
+                            <MDBNavItem active><MDBNavLink to="/new">New Post</MDBNavLink></MDBNavItem> : "" }
+                        {this.state.isLoggedIn ?
                             <MDBNavItem ><MDBNavLink to="#"  onClick={this.logOut}>Logout</MDBNavLink></MDBNavItem> : "" }
                         {!this.state.isLoggedIn ?
                         <MDBNavItem ><MDBNavLink to="/login">Login</MDBNavLink></MDBNavItem>  : "" }

@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api')->only(['store', 'update', 'destroy']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -37,13 +42,13 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         $post = new Post;
-        $post->user_id = $request->user_id;
+        $post->user_id = auth()->user()->id;
         $post->title= $request->title;
         $post->body= $request->body;
         $post->category_id= $request->category_id;
         $post->tags = $request->tags;
         $post->save();
-        return response()->json(['post_id' => $post->id]);
+        return response()->json(['data' => $post, 'message' => 'New Post has been added successfully!'], 201);
     }
 
     /**
