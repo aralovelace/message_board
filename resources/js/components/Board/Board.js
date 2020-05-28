@@ -4,7 +4,6 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import Post from "../apis/Post";
 import 'moment-timezone';
 import Moment from "react-moment";
-import { Button } from "react-bootstrap";
 import {Link} from "react-router-dom";
 
 
@@ -17,6 +16,7 @@ class Home extends Component {
         super(props);
         this.state = {
             posts: [],
+            modal: false,
             spinner: false,
             products: [],
             columns : [{
@@ -65,8 +65,28 @@ class Home extends Component {
         );
     };
 
+    toggleModal = () => {
+        this.setState({modal: !this.state.modal});
+    };
+
+    cancelTask = () => {
+        this.setState({title: "", body: "", cat: "" });
+        this.toggleModal();
+    };
+
+    addTask = () => {
+        if (this.state.title) {
+            // add DB
+            this.setState({title: "", body: "", cat: "" });
+            this.toggleModal();
+        }
+    };
+
+
+
     render() {
 
+        let options = {};
         this.state.posts.map(
             post => this.state.products.push({
                 'title': post.title,
@@ -84,9 +104,6 @@ class Home extends Component {
                     <div className="row">
                         <div className="col">
                             <h2>Message Board</h2>
-                            <div className="form-group">
-                                <Button name="singlebutton"> Add New Post</Button>
-                            </div>
                             <div>
                                 <BootstrapTable bootstrap4 keyField='id' data={this.state.products } columns={ this.state.columns } />
                             </div>

@@ -4,7 +4,6 @@ import FlashMessage from "react-flash-message";
 import {Button} from "react-bootstrap";
 
 
-
 class LoginContainer extends Component {
     constructor(props) {
         super(props);
@@ -36,10 +35,10 @@ class LoginContainer extends Component {
     }
 
     componentDidMount() {
-            const { prevLoc } = this.state.redirect.state || { prevLoc : {pathname: '/board'} } ;
-            if(prevLoc && this.state.isLoggedIn) {
-                return this.prop.history.push(prevLoc);
-            }
+        const { prevLocation } = this.state.redirect.state || { prevLocation: { pathname: '/board' } };
+        if (prevLocation && this.state.isLoggedIn) {
+            return this.props.history.push(prevLocation);
+        }
     }
 
     handleSubmit(e) {
@@ -66,7 +65,8 @@ class LoginContainer extends Component {
                     user: appState.user,
                     error: ''
                 });
-                this.props.history.push('/board');
+                location.reload()
+
             }
             else {
 

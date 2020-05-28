@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import { withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { MDBNavbarNav, MDBNavItem, MDBNavLink} from "mdbreact";
 
 class Header extends  Component {
+
+
     constructor(props) {
         super(props);
         this.state = {
@@ -12,15 +14,21 @@ class Header extends  Component {
         this.logOut = this.logOut.bind(this);
     }
 
-    logOut() {
+    logOut(e) {
+        e.preventDefault();
+
         let appState = {
             isLoggedIn: false,
             user: {}
         };
         localStorage["appState"] = JSON.stringify(appState);
         this.setState(appState);
-        this.props.history.push('/login');
+        location.reload()
+
     }
+
+
+
 
 
     render() {

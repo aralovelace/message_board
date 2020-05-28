@@ -17,6 +17,7 @@ const Main = () => (
         <PrivateRoute path="/board" component={Board} />
         <PrivateRoute path="/post/:id" component={Msg} />
 
+
     </Switch>
 
 

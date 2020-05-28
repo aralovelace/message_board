@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import Post from "../apis/Post";
 
-class Post extends Component {
+class Posting extends Component {
 
     constructor(props) {
         super(props);
@@ -9,4 +9,4 @@ class Post extends Component {
 
 }
 
-export default Post;
+export default Posting;
