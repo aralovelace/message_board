@@ -8,7 +8,7 @@ class Home extends Component {
                 <div className="container">
                     <div className="row">
                         <div className="section-about col-lg-6 mb-4 mb-lg-0">
-                          <div>
+                          <div key="Home-Public-Message-Board">
                                 <h2>Welcome to the Message Board</h2>
                                 <p>You can only view the message board once you login. Please login to the login page</p>
                           </div>

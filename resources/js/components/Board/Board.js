@@ -105,7 +105,7 @@ class Home extends Component {
                         <div className="col">
                             <h2>Message Board</h2>
                             <div>
-                                <BootstrapTable bootstrap4 keyField='id' data={this.state.products } columns={ this.state.columns } />
+                                <BootstrapTable bootstrap4 keyField='id'  data={this.state.products } columns={ this.state.columns } />
                             </div>
                         </div>
                     </div>

@@ -6,6 +6,7 @@ import CommentForm from "./CommentForm";
 import {MDBIcon} from "mdbreact";
 import ReactHtmlParser from 'react-html-parser';
 import {withRouter} from "react-router-dom";
+import Article from "./Article";
 
 
 class Msg extends Component {
@@ -35,23 +36,10 @@ class Msg extends Component {
 
     render(){
         return (
-            <div className="d-flex flex-column flex-md-row align-items-md-center py-5">
+            <div className="d-flex flex-column flex-md-row align-items-md-center py-5"  key={this.state.post.id} >
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-12 entry">
-                                <h2>{this.state.post.title}</h2>
-                                <div className="entry-meta">
-                                    <ul>
-                                        <li> <MDBIcon far icon="calendar" /> Posted on: <Moment format="YYYY/MM/DD" date={new Date(this.state.post.created_at)} />
-                                        </li>
-                                        <li><MDBIcon far icon="tags" /> Category: {this.state.category}</li>
-                                        <li><MDBIcon far icon="user" /> Posted by: {this.state.user}</li>
-                                    </ul>
-                                </div>
-                            <div className="entry-content">
-                                <p className="lead">{ ReactHtmlParser(this.state.post.body) }</p>
-                            </div>
-                        </div>
+                        <Article post={this.state.post} category={this.state.category} user={this.state.user} key={this.state.post.id}  />
                         <hr />
                     </div>
                     <div className="row">
