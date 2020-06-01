@@ -23,10 +23,10 @@ This is a version 1 of the Message Board Web app powered by Laravel and React.
 ## Functionalities
 1. Login as user
 1. Logout as user
-1. View Message Board (sort per column)
+1. View Message Board (sort per column, pagination)
 1. Add New Message  (title, body and category fyi: able to add more category in the database)
 1. View Message Detail
-1. Add Comments per message
+1. Add Comments per message ( real-time update)
 
 
 ## To Install 
