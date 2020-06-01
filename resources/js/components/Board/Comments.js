@@ -45,7 +45,7 @@ class Comments extends Component {
     render() {
         return (
             <div>
-            <div className="row">
+
                 <h3>Comments</h3>
                 <div id="comments">
                     {
@@ -73,8 +73,7 @@ class Comments extends Component {
                         ) : null
                     }
                 </div>
-            </div>
-                <div className="row">
+                <div >
                     <CommentForm post_id={this.state.post_id} onAdd={this.handleAddComment}  />
                 </div>
             </div>

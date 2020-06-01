@@ -35,9 +35,14 @@ class CommentForm extends Component {
     handleSubmit(e) {
         e.preventDefault();
         this.setState({
+            newComment: {
+                comment: ''
+            },
             error_message: null,
             errors: null
         });
+
+
         this.props.onAdd(this.state.newComment);
 
         this.setState({
@@ -82,6 +87,7 @@ class CommentForm extends Component {
                                                 className="form-control"
                                                 placeholder="Add your comment"
                                                 onChange={this.handleInput}
+                                                value={this.state.newComment.comment}
                                                 >
                                             </textarea>
                                         </div>
