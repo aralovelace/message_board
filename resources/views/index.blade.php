@@ -16,7 +16,7 @@
 <div id="page" class="d-flex flex-column">
         <div id="index"></div>
 </div>
-        <script type="text/javascript" src="js/app.js"></script>
+<script charset="utf8" src="{{ asset('/js/app.js') }}"></script>
 
 </body>
 

@@ -10,10 +10,13 @@ class CommentForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            comment: "",
             error_message: null,
             errors: null,
-            success_message: null
+            success_message: null,
+            newComment: {
+                comment: "",
+                post_id: 0
+            }
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,7 +25,10 @@ class CommentForm extends Component {
 
     handleInput(e) {
         this.setState({
-            comment: e.target.value
+            newComment: {
+                comment: e.target.value,
+                post_id: this.props.post_id
+            }
         });
     }
 
@@ -32,29 +38,11 @@ class CommentForm extends Component {
             error_message: null,
             errors: null
         });
-        Comment.store({'post_id': this.props.post_id  , 'comment':  this.state.comment }).then(response => {
+        this.props.onAdd(this.state.newComment);
 
+        this.setState({
+            success_message: "Success",
 
-            alert(response.data.message);
-            //this.props.history.push("/post/"+this.props.post_id+"?comment-updated");
-            this.props.history.push("/board");
-            /*
-            this.setState({
-                success_message: response.data.message,
-                comment: ""
-            });
-            *
-             */
-
-
-
-
-
-        }).catch(err => {
-            this.setState({
-                error_message: "There is an error",
-                errors: "There is an error"
-            });
         });
     }
 
@@ -94,7 +82,7 @@ class CommentForm extends Component {
                                                 className="form-control"
                                                 placeholder="Add your comment"
                                                 onChange={this.handleInput}
-                                                value={this.state.comment}>
+                                                >
                                             </textarea>
                                         </div>
                                             {
@@ -106,7 +94,6 @@ class CommentForm extends Component {
                                         <div className="form-group">
                                             <Button
                                                 type="submit"
-                                                name="singlebutton"
                                              >Submit
                                             </Button>
                                         </div>

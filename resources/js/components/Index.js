@@ -26,7 +26,7 @@ class Index extends Component {
     render()
     {
         return (
-            <div id="app">
+            <div id="app" key="message_board">
                 <BrowserRouter>
                     <Header userData={this.state.user} userIsLoggedIn={this.state.isLoggedIn}/>
                     <Route component={Main} />

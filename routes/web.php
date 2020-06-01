@@ -14,7 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Route::view('/{path?}', 'index');
-
+/*
 Route::get( '/{path?}', function(){
     return view( 'index' );
 } )->where('path', '.*');
+
+*/
+
+$spa = function () {
+    return view('index');
+};
+
+Route::get('/{view?}', $spa)->where('view', '(.*)')->name('catchall');

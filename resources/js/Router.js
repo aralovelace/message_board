@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
+import {BrowserRouter, Link, Route, Switch, withRouter} from "react-router-dom";
 import Home from "./components/Home/Home";
 
 import PrivateRoute from "./PrivateRoute";
@@ -25,4 +25,4 @@ const Main = () => (
 
 )
 
-export default Main;
+export default withRouter(Main);

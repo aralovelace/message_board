@@ -22,19 +22,19 @@ Route::group(['prefix' => 'auth'], function () {
     ], function() {
         Route::get('logout', 'AuthController@logout');
         Route::get('user', 'AuthController@user');
+
     });
 });
 
+Route::prefix('data')->group(function () {
+    Route::get('categories', 'CategoriesController@index');
+    Route::resource('posts', 'PostsController');
+    Route::post('comments', 'CommentsController@store');
+    Route::get('get-comments/{id}','CommentsController@getCommentsByPost');
+});
 
-    Route::prefix('data')->group(function () {
-        Route::get('categories', 'CategoriesController@index');
-
-        Route::resource('posts', 'PostsController');
 
 
-        Route::post('comments', 'CommentsController@store');
-
-    });
 
 
 

@@ -41,12 +41,22 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'comment' => 'required',
+            'post_id' => 'required|integer'
+        ]);
        $comment = Comment::query()->create([
            'user_id' => auth()->user()->id,
            'post_id' => $request->post_id,
            'comment' => $request->comment
        ]);
-        return response()->json(['data' => $comment, 'message' => 'Comment created successfully!'], 201);
+        return $comment->load('user');
+    }
+
+    public function getCommentsByPost(Request $request){
+        $comments = Comment::query()->where(['post_id' => $request->id ])->get();
+        return $comments->load('user');
+
     }
 
     /**
@@ -57,7 +67,8 @@ class CommentsController extends Controller
      */
     public function show(Comment $comment)
     {
-        //
+        return $comment->load('user');
+
     }
 
     /**
