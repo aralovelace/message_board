@@ -5,6 +5,7 @@ import Post from "../apis/Post";
 import 'moment-timezone';
 import Moment from "react-moment";
 import {Link} from "react-router-dom";
+import paginationFactory from "react-bootstrap-table2-paginator";
 
 
 
@@ -105,7 +106,16 @@ class Home extends Component {
                         <div className="col">
                             <h2>Message Board</h2>
                             <div>
-                                <BootstrapTable bootstrap4 keyField='id'  data={this.state.products } columns={ this.state.columns } />
+                                <BootstrapTable
+                                    bootstrap4
+                                    keyField='id'
+                                    data={this.state.products }
+                                    columns={ this.state.columns }
+                                    stripped
+                                    hover
+                                    condensed
+                                    pagination={paginationFactory({})}
+                                />
                             </div>
                         </div>
                     </div>

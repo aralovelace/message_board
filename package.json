@@ -36,6 +36,7 @@
         "node-waves": "^0.7.6",
         "react-bootstrap": "^1.0.1",
         "react-bootstrap-table-next": "^4.0.2",
+        "react-bootstrap-table2-paginator": "^2.1.2",
         "react-flash-message": "^1.0.2",
         "react-html-parser": "^2.0.2",
         "react-moment": "^0.9.7",
