@@ -55,8 +55,6 @@ class Home extends Component {
                 spinner: false
             });
         });
-
-
     }
 
     readMore =  (cell, row) => {
@@ -86,8 +84,7 @@ class Home extends Component {
 
 
     render() {
-
-        let options = {};
+        this.state.products = [];
         this.state.posts.map(
             post => this.state.products.push({
                 'title': post.title,
@@ -96,8 +93,6 @@ class Home extends Component {
                 'cat': post.category.name,
                 'date': <Moment format="YYYY/MM/DD" date={new Date(post.created_at)} />
             }));
-
-
 
         return (
             <div className="d-flex flex-column flex-md-row align-items-md-center py-5">
