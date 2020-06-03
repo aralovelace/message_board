@@ -37,3 +37,8 @@ This is a version 1 of the Message Board Web app powered by Laravel and React.
 1. php artisan db:seed
 1. Npm install
 1. npm run dev
+
+## Unit Testing
+1. Browsing Test Response
+a. User Login
+b. User Registration
