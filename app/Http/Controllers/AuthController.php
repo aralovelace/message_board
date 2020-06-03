@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
@@ -20,11 +21,14 @@ class AuthController extends Controller
     */
     public function register(Request $request) {
 
+
         $request->validate([
                 'name' => 'required|string',
                 'email' => 'required|string|email|unique:users',
-                'password'=> 'required|string|confirmed'
+                'password'=> 'required|string|min:8'
             ]);
+
+
 
         $user = new User([
             'name' => $request->name,
@@ -34,8 +38,12 @@ class AuthController extends Controller
 
         $user->save();
 
+
         return response()->json([
-            'message' => 'User has been added successfully'
+            'message' => 'User has been added successfully',
+            'id' => $user->id,
+            'name' => $user->name,
+            'email' => $user->email,
         ],201);
 
     }

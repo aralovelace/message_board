@@ -11,7 +11,7 @@ use Laravel\Passport\Passport;
 
 class PostTest extends TestCase
 {
-    use RefreshDatabase, WithFaker, RefreshDatabase;
+    use WithFaker, RefreshDatabase;
 
     /** @test */
     public function test_can_create_post() {
