@@ -13,13 +13,13 @@ class PostTest extends TestCase
 {
     use RefreshDatabase, WithFaker, RefreshDatabase;
 
+    /** @test */
     public function test_can_create_post() {
 
         \Artisan::call('passport:install');
         $user = factory(User::class)->create();
         Passport::actingAs($user);
-        $token = $user->generateToken();
-        $headers = [ 'Authorization' => 'Bearer $token'];
+
         $data = [
             'title' => $this->faker->sentence,
             'body' => $this->faker->paragraph,
@@ -27,9 +27,11 @@ class PostTest extends TestCase
             'category_id' => 1
         ];
 
-        $this->post(route('posts.store'), $data,  $headers)
+        $this->post(route('posts.store'), $data)
             ->assertStatus(201)
             ->assertJson(['data' => $data]);
     }
+
+
 
 }
