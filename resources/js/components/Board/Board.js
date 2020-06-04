@@ -1,14 +1,10 @@
 import React, {Component} from "react";
-import ReactDOM from "react-dom";
 import BootstrapTable from 'react-bootstrap-table-next';
 import Post from "../apis/Post";
 import 'moment-timezone';
 import Moment from "react-moment";
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import paginationFactory from "react-bootstrap-table2-paginator";
-
-
-
 
 class Home extends Component {
 
@@ -38,7 +34,12 @@ class Home extends Component {
                 dataField: 'date',
                 text: 'Date Posted',
                 sort: true
+            },{
+                dataField: 'action',
+                text: 'Action',
+                formatter: this.action
             }
+                
             ]
         };
 
@@ -63,6 +64,23 @@ class Home extends Component {
             <Link to={'/post/'+ cell}> {row.title} </Link>
         );
     };
+
+
+    action = (cell, row, rowIndex, formatExtraData) => {
+        return (
+                <div>
+                    <button type="button" className="btn btn-outline-primary btn-sm ts-buttom" size="sm" onClick={() =>
+                        this.props.history.push('/post/edit/'+cell)
+                    }>
+                        Edit
+                    </button>
+                    <button type="button" className="btn btn-outline-danger btn-sm ml-2 ts-buttom" size="sm">
+                        Delete
+                    </button>
+                </div>
+        );
+    }
+
 
     toggleModal = () => {
         this.setState({modal: !this.state.modal});
@@ -91,7 +109,8 @@ class Home extends Component {
                 'read' : post.id,
                 'user': post.user.name,
                 'cat': post.category.name,
-                'date': <Moment format="YYYY/MM/DD" date={new Date(post.created_at)} />
+                'date': <Moment format="YYYY/MM/DD" date={new Date(post.created_at)} />,
+                'action' : post.id
             }));
 
         return (
@@ -121,4 +140,4 @@ class Home extends Component {
 
 }
 
-export default Home;
+export default withRouter(Home);

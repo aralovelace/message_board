@@ -41,6 +41,13 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+
+        request()->validate([
+            'title' => 'required|string|max:255',
+            'body' => 'required|string',
+            'category_id' => 'required'
+        ]);
+
         $post = new Post;
         $post->user_id = auth()->user()->id;
         $post->title= $request->title;
@@ -78,12 +85,18 @@ class PostsController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Post  $post
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request, Post $post)
     {
+        request()->validate([
+            'title' => 'required|string|max:255',
+            'body' => 'required|string',
+            'category_id' => 'required'
+        ]);
+
         $post->update($request->all());
-        return response()->json(['post_id' => $post->id]);
+        return response()->json($post);
 
     }
 

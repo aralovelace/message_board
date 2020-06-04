@@ -15,6 +15,8 @@ class LoginControllerTest extends TestCase
     /** @test */
     public function login_displays_validation_errors()
     {
+        \Artisan::call('passport:install');
+        $user = factory(User::class)->create();
         $response = $this->post('/api/auth/login', []);
         $response->assertStatus(302);
         $response->assertSessionHasErrors('email');
