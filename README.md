@@ -39,6 +39,8 @@ This is a version 1 of the Message Board Web app powered by Laravel and React.
 1. npm run dev
 
 ## Unit Testing
-1. Browsing Test Response
-a. User Login
-b. User Registration
+###Browsing Test Response
+1.  User Login
+1. User Registration
+1. PostController (GET, POST, PUT, DELETE)
+2. CommentControlller 
